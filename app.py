@@ -59,13 +59,15 @@ def avoid_obstacles(interest_points,route,obj):
             if route[i][j][1] > interest_points[0][1] and route[i][j][1] < interest_points[2][1] or route[i][j][1] > interest_points[1][1] and route[i][j][1] < interest_points[3][1]:
                 data_lat_obj_avoid = route[i][j][0]
                 data_lat_obj2_avoid = get_coordinates_lat_or_long(str(data_lat_obj_avoid),float(obj[4]),1) 
-                data_lat_res_avoid = sexadecimal_to_decimal(data_lat_obj2_avoid)
                 data_long_obj_avoid = get_coordinates_lat_or_long(str(route[i][j][1]),float(obj[3])/2,2)
-                data_lat2_obj_avoid = get_coordinates_lat_or_long(str(route[i][j][1]),float(obj[4]),1)
+                data_lat2_obj_avoid = get_coordinates_lat_or_long(str(route[i][j][0]),float(obj[4]),1)
                 data_long2_obj_avoid = get_coordinates_lat_or_long(str(route[i][j][1]),-float(obj[3])/2,2)
+                
                 data_long_res_avoid = sexadecimal_to_decimal(data_long_obj_avoid)
                 data_lat2_res_avoid = sexadecimal_to_decimal(data_lat2_obj_avoid)
                 data_long2_res_avoid = sexadecimal_to_decimal(data_long2_obj_avoid)
+                data_lat_res_avoid = sexadecimal_to_decimal(data_lat_obj2_avoid)
+                
                 new_routes.append([data_lat2_res_avoid,data_long_res_avoid])
                 new_routes.append([data_lat2_res_avoid,data_long_res_avoid])
                 new_routes.append([data_lat_res_avoid,data_long2_res_avoid])
@@ -130,7 +132,7 @@ square4 = input("Ingrese latitud y longitud esquina 4: ")
 obst = int(input("¿¿Cuantos obstaculos quiere agregar??: "))
 i = 0
 list_obst = []
-while i < obst:
+while i < 0:
     ob1 = input("Ingrese latitud, longitud, altura, ancho, largo del obstaculo: ")
     list_obst.append(ob1)
     i+=1
